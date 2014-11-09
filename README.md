@@ -30,16 +30,18 @@ Add a definition to a namespace, maintaining any existing definitions.
 ```js
 var locations = new Namespace();
 
-locations.add('california.sanFrancisco.soma', function() {
-  return { type: 'neighborhood', location: 'california.sanFrancisco' }
+locations.add('california.sanFrancisco.soma', {
+  type: 'neighborhood',
+  location: 'california.sanFrancisco'
 });
 
-locations.add('california.sanFrancisco', function() {
-  return { type: 'city', location: 'california' };
+locations.add('california.sanFrancisco', {
+  type: 'city',
+  location: 'california'
 });
 
 locations.california.sanFrancisco;
-// >> { type: 'neighborhood', location: 'california.sanFrancisco' }
+// >> { type: 'neighborhood', location: 'california.sanFrancisco', soma: {...} }
 
 locations.california.sanFrancisco.soma;
 // >> { type: 'city', location: 'california' }
