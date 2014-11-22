@@ -19,7 +19,7 @@ var KEYPATH_SPLITTER = /\./g;
  * @private
  * @type {Object}
  */
-var _keypathCache = {};
+var _keypaths = {};
 
 _.extend(Namespace.prototype, {
 
@@ -66,9 +66,12 @@ _.extend(Namespace.prototype, {
    * @returns {function|Object|undefined} - The reduced keypath.
    */
   _walk(keypath, callback) {
-    keypath = _keypathCache[keypath] || (_keypathCache[keypath] = keypath.split(KEYPATH_SPLITTER));
-    return _.reduce(keypath, callback || function(memo, name) {
-      return memo && memo[name];
-    }, this);
+    return _.reduce(
+      _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
+      callback || function(memo, name) {
+        return memo && memo[name];
+      },
+      this
+    );
   }
 });
