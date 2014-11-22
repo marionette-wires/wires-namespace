@@ -66,7 +66,7 @@ _.extend(Namespace.prototype, {
    * @returns {function|Object|undefined} - The reduced keypath.
    */
   _walk(keypath, callback) {
-    keypath = _keypathCache[keypath] || keypath.split(KEYPATH_SPLITTER);
+    keypath = _keypathCache[keypath] || (_keypathCache[keypath] = keypath.split(KEYPATH_SPLITTER));
     return _.reduce(keypath, callback || function(memo, name) {
       return memo && memo[name];
     }, this);
