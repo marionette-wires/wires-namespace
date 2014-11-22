@@ -51,7 +51,7 @@ _.extend(Namespace.prototype, {
    * @param {String} keypath - The keypath to lookup a definition for.
    * @returns {Function|Object|undefined} - The definition if it exists, otherwise `undefined`.
    */
-  get: function(keypath) {
+  get(keypath) {
     return this._walk(keypath);
   },
 
