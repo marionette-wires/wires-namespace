@@ -1,8 +1,8 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['underscore'], factory);
+    define(['lodash'], factory);
   } else if (typeof exports !== 'undefined') {
-    module.exports = factory(require('underscore'));
+    module.exports = factory(require('lodash'));
   } else {
     root.Namespace = factory(root._);
   }
@@ -13,7 +13,7 @@
    * @module namespace
    * @class namespace
    */
-  var Namespace = function() {};
+  function Namespace() {}
   
   /**
    * Regex for splitting keypaths into arrays.
@@ -30,7 +30,7 @@
    * @private
    * @type {Object}
    */
-  var _keypathCache = {};
+  var _keypaths = {};
   
   _.extend(Namespace.prototype, {
   
@@ -77,10 +77,13 @@
      * @returns {function|Object|undefined} - The reduced keypath.
      */
     _walk: function(keypath, callback) {
-      keypath = _keypathCache[keypath] || keypath.split(KEYPATH_SPLITTER);
-      return _.reduce(keypath, callback || function(memo, name) {
-        return memo && memo[name];
-      }, this);
+      return _.reduce(
+        _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
+        callback || function(memo, name) {
+          return memo && memo[name];
+        },
+        this
+      );
     }
   });
   
