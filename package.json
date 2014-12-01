@@ -38,6 +38,6 @@
     "sinon-chai": "^2.6.0"
   },
   "dependencies": {
-    "underscore": "^1.7.0"
+    "lodash": "^2.4.1"
   }
 }
