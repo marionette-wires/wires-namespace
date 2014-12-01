@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 /**
  * @module namespace
  * @class namespace
@@ -75,3 +77,5 @@ _.extend(Namespace.prototype, {
     );
   }
 });
+
+export default Namespace;

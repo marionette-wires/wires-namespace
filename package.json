@@ -5,7 +5,8 @@
   "main": "./dist/namespace.js",
   "scripts": {
     "build": "gulp build",
-    "test": "gulp test"
+    "test": "gulp test",
+    "coverage": "gulp coverage"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,14 @@
   },
   "homepage": "https://github.com/thejameskyle/namespace.js",
   "devDependencies": {
-    "6to5": "^1.10.3",
+    "6to5": "^1.14.6",
     "chai": "^1.9.2",
     "gulp": "^3.8.9",
     "gulp-6to5": "^1.0.1",
     "gulp-dox": "0.0.1",
     "gulp-eslint": "^0.1.8",
     "gulp-filter": "^1.0.2",
+    "gulp-istanbul": "git://github.com/thejameskyle/gulp-istanbul#isparta",
     "gulp-jshint": "^1.9.0",
     "gulp-mocha": "^1.1.1",
     "gulp-preprocess": "^1.1.1",

@@ -8,6 +8,7 @@ var filter     = require('gulp-filter');
 var jshint     = require('gulp-jshint');
 var stylish    = require('jshint-stylish');
 var mocha      = require('gulp-mocha');
+var istanbul   = require('gulp-istanbul');
 var dox        = require('gulp-dox');
 var name       = require('./package').name;
 
@@ -16,8 +17,13 @@ function compile() {
     .pipe(preprocess())
     .pipe(rename(name + '.js'))
     .pipe(sourcemaps.init())
-      .pipe(to5({ blacklist: ['useStrict', '_declarations'] }))
+      .pipe(to5({ blacklist: ['useStrict', '_declarations'], modules: 'ignore' }))
     .pipe(sourcemaps.write('./'));
+}
+
+function test() {
+  return gulp.src('test/**.js', { read: false })
+    .pipe(mocha({ reporter: 'spec' }));
 }
 
 gulp.task('build', function() {
@@ -48,12 +54,22 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('mocha', ['build:tmp'], function() {
-  return gulp.src('test/**.js', { read: false })
-    .pipe(mocha({ reporter: 'spec' }));
+gulp.task('mocha', function() {
+  require('6to5/register')({ modules: 'common' });
+  return test();
 });
 
-gulp.task('test', ['jshint', 'mocha']);
+gulp.task('coverage', function(done) {
+  gulp.src(['src/namespace.js'])
+    .pipe(istanbul())
+    .on('finish', function() {
+      return test()
+        .pipe(istanbul.writeReports())
+        .on('end', done);
+    });
+});
+
+gulp.task('test', ['jshint', 'build:tmp', 'mocha']);
 
 gulp.task('watch', function() {
   gulp.watch('src/**.js', ['test']);

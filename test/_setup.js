@@ -18,9 +18,8 @@ function setup() {
 
 if (typeof exports !== 'undefined') {
   root = global;
-  root._ = require('underscore');
-  require('6to5/register');
-  root.Namespace = require('../tmp/namespace');
+  root._ = require('lodash');
+  root.Namespace = require('../src/namespace').default;
   root.chai = require('chai');
   root.sinon = require('sinon');
   root.chai.use(require('sinon-chai'));
@@ -30,7 +29,7 @@ if (typeof exports !== 'undefined') {
   root.mocha.setup('bdd');
   root.onload = function() {
     root.mocha.checkLeaks();
-    root.mocha.globals(['stub', 'spy']);
+    root.mocha.globals(['stub', 'spy', 'expect']);
     root.mocha.run();
     setup();
   };
