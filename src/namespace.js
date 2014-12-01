@@ -2,7 +2,7 @@
  * @module namespace
  * @class namespace
  */
-function Namespace() {};
+function Namespace() {}
 
 /**
  * Regex for splitting keypaths into arrays.

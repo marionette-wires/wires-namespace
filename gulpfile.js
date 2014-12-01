@@ -43,7 +43,7 @@ gulp.task('docs', function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src(['src/**/*.js', '!src/wrapper.js'])
+  return gulp.src(['src/**/*.js', 'test/**/*.js', '!src/wrapper.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });

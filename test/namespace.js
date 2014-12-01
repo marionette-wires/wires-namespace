@@ -5,8 +5,7 @@ describe('Namespace', function() {
 
   describe('#add', function() {
     it('should add a definition', function() {
-      function foo() {};
-
+      function foo() {}
       this.namespace.add('foo', foo);
 
       expect(this.namespace)
