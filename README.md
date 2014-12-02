@@ -3,6 +3,8 @@ Namespace.js
 
 Micro-library for namespacing objects.
 
+[![Travis Status](http://img.shields.io/travis/hackbone/namespace.js/master.svg?style=flat&amp;label=travis)](https://travis-ci.org/hackbone/namespace.js) [![Code Climate Score](http://img.shields.io/codeclimate/github/hackbone/namespace.js.svg?style=flat)](https://codeclimate.com/github/hackbone/namespace.js) [![Coverage](http://img.shields.io/codeclimate/coverage/github/hackbone/namespace.js.svg?style=flat)](https://codeclimate.com/github/hackbone/namespace.js) [![Dependency Status](http://img.shields.io/david/hackbone/namespace.js.svg?style=flat)](https://david-dm.org/hackbone/namespace.js)
+
 ## Usage
 
 ### Namespace
