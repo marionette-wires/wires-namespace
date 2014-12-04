@@ -13,7 +13,7 @@ var dox        = require('gulp-dox');
 var name       = require('./package').name;
 
 function compile() {
-  return gulp.src('src/wrapper.js')
+  return gulp.src('src/_wrapper.js')
     .pipe(preprocess())
     .pipe(rename(name + '.js'))
     .pipe(sourcemaps.init())
@@ -49,7 +49,7 @@ gulp.task('docs', function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src(['src/**/*.js', 'test/**/*.js', '!src/wrapper.js'])
+  return gulp.src(['src/**/*.js', 'test/**/*.js', '!src/_*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
