@@ -1,7 +1,7 @@
 {
   "name": "wires-namespace",
   "version": "0.1.0",
-  "description": "",
+  "description": "A simple namespace class.",
   "main": "./dist/wires-namespace.js",
   "scripts": {
     "build": "gulp build",
