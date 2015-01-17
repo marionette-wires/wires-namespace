@@ -1,8 +1,8 @@
 {
-  "name": "namespace",
-  "version": "0.0.0",
+  "name": "wires-namespace",
+  "version": "0.1.0",
   "description": "",
-  "main": "./dist/namespace.js",
+  "main": "./dist/wires-namespace.js",
   "scripts": {
     "build": "gulp build",
     "test": "gulp test",
@@ -10,30 +10,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thejameskyle/namespace.js.git"
+    "url": "https://github.com/marionette-wires/wires-namespace.git"
   },
   "author": "James Kyle <me@thejameskyle.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thejameskyle/namespace.js/issues"
+    "url": "https://github.com/marionette-wires/wires-namespace/issues"
   },
-  "homepage": "https://github.com/thejameskyle/namespace.js",
+  "homepage": "https://github.com/marionette-wires/wires-namespace",
   "devDependencies": {
-    "6to5": "^1.14.6",
+    "6to5": "^2.12.6",
     "chai": "^1.9.2",
     "gulp": "^3.8.9",
-    "gulp-6to5": "^1.0.1",
+    "gulp-6to5": "^2.0.2",
     "gulp-dox": "0.0.1",
-    "gulp-eslint": "^0.1.8",
     "gulp-filter": "^1.0.2",
     "gulp-istanbul": "git://github.com/thejameskyle/gulp-istanbul#isparta",
-    "gulp-jshint": "^1.9.0",
+    "gulp-jshint": "^1.8.5",
     "gulp-mocha": "^1.1.1",
-    "gulp-preprocess": "^1.1.1",
     "gulp-rename": "^1.2.0",
     "gulp-sourcemaps": "^1.2.4",
     "gulp-uglify": "^1.0.1",
-    "jshint": "^2.5.10",
     "jshint-stylish": "^1.0.0",
     "mocha": "^2.0.1",
     "sinon": "^1.10.3",

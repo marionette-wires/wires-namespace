@@ -1,20 +1,24 @@
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['lodash'], factory);
-  } else if (typeof exports !== 'undefined') {
-    module.exports = factory(require('lodash'));
-  } else {
-    root.Namespace = factory(root._);
+(function (factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["exports", "module", "lodash"], factory);
+  } else if (typeof exports !== "undefined" && typeof module !== "undefined") {
+    factory(exports, module, require("lodash"));
   }
-})(this, function(_) {
-  'use strict';
+})(function (exports, module, _lodash) {
+  "use strict";
+
+  var _interopRequire = function (obj) {
+    return obj && (obj["default"] || obj);
+  };
+
+  var _ = _interopRequire(_lodash);
 
   /**
    * @module namespace
    * @class namespace
    */
   function Namespace() {}
-  
+
   /**
    * Regex for splitting keypaths into arrays.
    *
@@ -23,7 +27,7 @@
    * @type
    */
   var KEYPATH_SPLITTER = /\./g;
-  
+
   /**
    * An internal cache to avoid calculating a keypath more than once.
    *
@@ -31,9 +35,9 @@
    * @type {Object}
    */
   var _keypaths = {};
-  
+
   _.extend(Namespace.prototype, {
-  
+
     /**
      * Adds a definition to the namespace object.
      *
@@ -44,15 +48,15 @@
      * @param {Function|Object} definition - The definition to be added.
      * @return {Function|Object} - The definition.
      */
-    add: function(keypath, definition) {
-      return this._walk(keypath, function(memo, name, index, keypath) {
+    add: function add(keypath, definition) {
+      return this._walk(keypath, function (memo, name, index, keypath) {
         if (index + 1 === keypath.length) {
           memo[name] = _.extend(definition, memo[name]);
         }
         return memo[name] || (memo[name] = {});
       });
     },
-  
+
     /**
      * Retrieves a definition from the namespace safely.
      *
@@ -62,10 +66,10 @@
      * @param {String} keypath - The keypath to lookup a definition for.
      * @returns {Function|Object|undefined} - The definition if it exists, otherwise `undefined`.
      */
-    get: function(keypath) {
+    get: function get(keypath) {
       return this._walk(keypath);
     },
-  
+
     /**
      * An internal function for walking a keypath.
      *
@@ -76,18 +80,13 @@
      * @param {Function} [callback] - An optional callback to be called at each item in the path.
      * @returns {function|Object|undefined} - The reduced keypath.
      */
-    _walk: function(keypath, callback) {
-      return _.reduce(
-        _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
-        callback || function(memo, name) {
-          return memo && memo[name];
-        },
-        this
-      );
+    _walk: function Walk(keypath, callback) {
+      return _.reduce(_keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)), callback || function (memo, name) {
+        return memo && memo[name];
+      }, this);
     }
   });
-  
-  return Namespace;
-});
 
-//# sourceMappingURL=namespace.js.map
+  module.exports = Namespace;
+});
+//# sourceMappingURL=wires-namespace.js.map

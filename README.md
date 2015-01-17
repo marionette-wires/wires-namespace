@@ -1,9 +1,9 @@
-Namespace.js
-============
+Wires Namespace
+===============
 
 Micro-library for namespacing objects.
 
-[![Travis Status](http://img.shields.io/travis/hackbone/namespace.js/master.svg?style=flat&amp;label=travis)](https://travis-ci.org/hackbone/namespace.js) [![Code Climate Score](http://img.shields.io/codeclimate/github/hackbone/namespace.js.svg?style=flat)](https://codeclimate.com/github/hackbone/namespace.js) [![Coverage](http://img.shields.io/codeclimate/coverage/github/hackbone/namespace.js.svg?style=flat)](https://codeclimate.com/github/hackbone/namespace.js) [![Dependency Status](http://img.shields.io/david/hackbone/namespace.js.svg?style=flat)](https://david-dm.org/hackbone/namespace.js)
+[![Travis Status](http://img.shields.io/travis/marionette-wires/wires-namespace/master.svg?style=flat&amp;label=travis)](https://travis-ci.org/marionette-wires/wires-namespace) [![Code Climate Score](http://img.shields.io/codeclimate/github/marionette-wires/wires-namespace.svg?style=flat)](https://codeclimate.com/github/marionette-wires/wires-namespace) [![Coverage](http://img.shields.io/codeclimate/coverage/github/marionette-wires/wires-namespace.svg?style=flat)](https://codeclimate.com/github/marionette-wires/wires-namespace) [![Dependency Status](http://img.shields.io/david/marionette-wires/wires-namespace.svg?style=flat)](https://david-dm.org/marionette-wires/wires-namespace)
 
 ## Usage
 
@@ -12,7 +12,9 @@ Micro-library for namespacing objects.
 Namespaces are objects that you may add **definitions** by **keypath**.
 
 ```js
-var namespace = new Namespace();
+import Namespace from 'wires-namespace';
+
+let namespace = new Namespace();
 
 namespace.add('greeting', function() {
   return 'Hello World';
@@ -30,7 +32,9 @@ namespace.greeting();
 Add a definition to a namespace, maintaining any existing definitions.
 
 ```js
-var locations = new Namespace();
+import Namespace from 'wires-namespace';
+
+let locations = new Namespace();
 
 locations.add('california.sanFrancisco.soma', {
   type: 'neighborhood',
@@ -54,7 +58,9 @@ locations.california.sanFrancisco.soma;
 Safely retrieve a definition by keypath, returning `undefined` if definition does not exist.
 
 ```js
-var people = new Namespace();
+import Namespace from 'wires-namespace';
+
+let people = new Namespace();
 
 people.add('jamesKyle', {
   name: 'James Kyle',
@@ -76,7 +82,7 @@ people.get('johnDoe.type');
 [clone](http://git-scm.com/docs/git-clone) this repo.
 
 ```
-git clone git@github.com:thejameskyle/namespace.js.git && cd namespace.js
+git clone git@github.com:marionette-wires/wires-namespace.git && cd wires-namespace
 ```
 
 Make sure [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) are
